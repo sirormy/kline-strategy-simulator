@@ -14,7 +14,7 @@ graph TB
         A[Trading Interface] --> B[Chart Component]
         A --> C[Strategy Config]
         A --> D[Manual Trading]
-        B --> E[TradingView Charts]
+        B --> E[KLineCharts]
     end
     
     subgraph "Backend (NestJS)"
@@ -71,7 +71,7 @@ graph TB
 - **前端**: React + TypeScript + Hooks
 - **数据库**: MongoDB (主数据存储)
 - **缓存**: Redis (实时数据缓存)
-- **图表**: TradingView Charting Library
+- **图表**: KLineCharts
 - **包管理**: pnpm
 - **API集成**: binance-connector-js
 - **AI分析**: OpenAI API + MCP (Model Context Protocol)
