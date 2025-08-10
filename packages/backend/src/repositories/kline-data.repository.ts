@@ -260,6 +260,47 @@ export class KlineDataRepository extends BaseRepository<KlineDataDocument> {
   }
 
   /**
+   * 根据查询条件查找K线数据
+   */
+  async findByQuery(query: {
+    symbol: string;
+    interval: string;
+    startTime?: number;
+    endTime?: number;
+    limit?: number;
+  }): Promise<KlineDataDocument[]> {
+    return this.findBySymbolAndInterval(
+      query.symbol,
+      query.interval,
+      query.startTime,
+      query.endTime,
+      query.limit
+    );
+  }
+
+  /**
+   * 插入或更新单条K线数据
+   */
+  async upsert(klineData: Partial<KlineDataDocument>): Promise<KlineDataDocument> {
+    return this.updateOne(
+      {
+        symbol: klineData.symbol,
+        interval: klineData.interval,
+        openTime: klineData.openTime,
+      },
+      klineData,
+      { upsert: true }
+    );
+  }
+
+  /**
+   * 批量插入K线数据
+   */
+  async insertMany(klineData: Partial<KlineDataDocument>[]): Promise<KlineDataDocument[]> {
+    return this.createMany(klineData);
+  }
+
+  /**
    * 创建必要的索引
    */
   async createIndexes(): Promise<void> {

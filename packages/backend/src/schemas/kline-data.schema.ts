@@ -71,6 +71,9 @@ export class KlineData {
   @IsNumber()
   @Min(0)
   takerBuyQuoteVolume: number;
+
+  @Prop({ default: false })
+  isClosed?: boolean;
 }
 
 export const KlineDataSchema = SchemaFactory.createForClass(KlineData);

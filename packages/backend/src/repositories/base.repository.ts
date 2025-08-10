@@ -23,7 +23,7 @@ export abstract class BaseRepository<T extends Document> {
   }
 
   async createMany(createDtos: Partial<T>[]): Promise<T[]> {
-    return this.model.insertMany(createDtos);
+    return this.model.insertMany(createDtos) as unknown as Promise<T[]>;
   }
 
   async findById(id: string): Promise<T | null> {
@@ -96,7 +96,7 @@ export abstract class BaseRepository<T extends Document> {
   }
 
   async deleteOne(filter: FilterQuery<T>): Promise<T | null> {
-    return this.model.findOneAndDelete(filter).exec();
+    return this.model.findOneAndDelete(filter).exec() as unknown as Promise<T | null>;
   }
 
   async deleteMany(filter: FilterQuery<T>): Promise<{ deletedCount: number }> {
@@ -122,8 +122,8 @@ export abstract class BaseRepository<T extends Document> {
   }
 
   // 创建索引的辅助方法
-  async createIndex(index: any, options?: any): Promise<void> {
-    await this.model.createIndexes([{ key: index, ...options }]);
+  async createIndex(index: any, options: any = {}): Promise<void> {
+    await this.model.collection.createIndex(index, options);
   }
 
   // 获取集合统计信息

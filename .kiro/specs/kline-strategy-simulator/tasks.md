@@ -20,20 +20,20 @@
   - 添加数据查询优化和分页支持
   - _Requirements: 2.1, 2.3, 7.4_
 
-- [ ] 3. Binance API集成和市场数据服务
-- [ ] 3.1 集成Binance REST API
+- [x] 3. Binance API集成和市场数据服务
+- [x] 3.1 集成Binance REST API
   - 使用binance-connector-js实现历史K线数据获取
   - 实现交易对信息查询和市场数据接口
   - 添加API错误处理和重试机制
   - _Requirements: 1.1, 1.4, 2.2_
 
-- [ ] 3.2 实现WebSocket实时数据流
+- [x] 3.2 实现WebSocket实时数据流
   - 集成Binance WebSocket API进行实时K线数据订阅
   - 实现数据流的连接管理和断线重连
   - 添加实时数据的缓存和持久化存储
   - _Requirements: 1.3, 1.2_
 
-- [ ] 3.3 创建Market Data Service
+- [x] 3.3 创建Market Data Service
   - 实现MarketDataService接口的完整功能
   - 添加数据获取的缓存策略和性能优化
   - 编写市场数据服务的单元测试
