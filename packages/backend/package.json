@@ -18,7 +18,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "plugin": "node scripts/plugin-cli.js",
+    "plugin:init": "node scripts/plugin-cli.js init",
+    "plugin:create": "node scripts/plugin-cli.js create",
+    "plugin:list": "node scripts/plugin-cli.js list",
+    "plugin:validate": "node scripts/plugin-cli.js validate",
+    "plugin:test": "node scripts/plugin-cli.js test"
   },
   "dependencies": {
     "@binance/connector": "^1.0.0",
@@ -29,15 +35,22 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-socket.io": "^10.0.0",
     "@nestjs/schedule": "^3.0.1",
+    "@nestjs/swagger": "^7.1.8",
     "@nestjs/websockets": "^10.0.0",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "commander": "^11.0.0",
+    "inquirer": "^8.2.6",
     "mongoose": "^7.4.0",
     "openai": "^4.0.0",
     "redis": "^4.6.7",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "uuid": "^11.1.0",
+    "vm2": "^3.9.19"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

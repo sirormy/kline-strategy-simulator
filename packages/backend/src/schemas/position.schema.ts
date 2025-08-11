@@ -2,7 +2,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { IsString, IsNumber, IsPositive, IsEnum, Min } from 'class-validator';
 
-export type PositionDocument = Position & Document;
+export interface PositionMethods {
+  calculateUnrealizedPnl(currentPrice: number): number;
+  calculateRealizedPnl(): number;
+}
+
+export type PositionDocument = Position & Document & PositionMethods;
 
 export enum PositionSide {
   LONG = 'LONG',

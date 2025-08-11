@@ -156,6 +156,34 @@ export class Strategy {
 
 export const StrategySchema = SchemaFactory.createForClass(Strategy);
 
+// 策略配置接口（用于策略实现）
+export interface StrategyConfig {
+  id: string;
+  accountId: string;
+  name: string;
+  type: string;
+  version: string;
+  parameters: { [key: string]: any };
+  symbols: string[];
+  timeframe: string;
+  enabled: boolean;
+  metadata?: StrategyMetadata;
+  config?: {
+    maxPositions?: number;
+    riskPerTrade?: number;
+    stopLoss?: number;
+    takeProfit?: number;
+    [key: string]: any;
+  };
+  state?: {
+    lastExecutionTime?: number;
+    totalTrades?: number;
+    winningTrades?: number;
+    totalPnl?: number;
+    [key: string]: any;
+  };
+}
+
 // 创建复合索引
 StrategySchema.index({ accountId: 1, enabled: 1 });
 StrategySchema.index({ type: 1, enabled: 1 });

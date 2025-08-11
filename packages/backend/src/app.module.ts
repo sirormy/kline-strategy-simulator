@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseConfig } from './config/database.config';
 import { RedisConfig } from './config/redis.config';
+import { StrategyModule } from './modules/strategy.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { RedisConfig } from './config/redis.config';
       useClass: DatabaseConfig,
     }),
     ScheduleModule.forRoot(),
+    StrategyModule,
   ],
   controllers: [AppController],
   providers: [AppService, RedisConfig],

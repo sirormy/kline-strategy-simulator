@@ -2,7 +2,14 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { IsString, IsNumber, IsObject, IsOptional, Min } from 'class-validator';
 
-export type AccountDocument = Account & Document;
+export interface AccountMethods {
+  getBalance(asset: string): Balance | null;
+  updateBalance(asset: string, freeChange: number, lockedChange?: number): void;
+  calculateTotalEquity(prices: { [asset: string]: number }): number;
+  updateStats(tradeResult: { pnl: number; isWin: boolean; commission: number; fundingFee?: number }): void;
+}
+
+export type AccountDocument = Account & Document & AccountMethods;
 
 // 账户余额信息
 export interface Balance {
